@@ -22,6 +22,13 @@ export function IntroLoader() {
     played.current = true;
     document.body.style.overflow = "hidden";
 
+    const applyScript = (script: (typeof greetings)[number]["script"]) => {
+      const isRtl = script === "arabic";
+      text.classList.toggle("intro-text--fa", isRtl);
+      text.setAttribute("dir", isRtl ? "rtl" : "ltr");
+      text.setAttribute("lang", isRtl ? "fa" : "en");
+    };
+
     const tl = gsap.timeline({
       onComplete: () => {
         document.body.style.overflow = "";
@@ -39,6 +46,7 @@ export function IntroLoader() {
       tl.call(() => {
         text.textContent = greeting.text;
         lang.textContent = greeting.lang;
+        applyScript(greeting.script);
       });
       tl.fromTo(
         text,
@@ -118,7 +126,12 @@ export function IntroLoader() {
           {greetings[0].lang}
         </p>
         <div className="intro-text-wrap">
-          <div ref={textRef} className="intro-text font-display">
+          <div
+            ref={textRef}
+            className="intro-text font-display"
+            dir="ltr"
+            lang="en"
+          >
             {greetings[0].text}
           </div>
         </div>

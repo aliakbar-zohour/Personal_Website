@@ -29,14 +29,13 @@ export function TextReveal({
     const ctx = gsap.context(() => {
       gsap.fromTo(
         lines,
-        { yPercent: 120, rotate: 3, opacity: 0.2 },
+        { y: "1.1em", opacity: 0 },
         {
-          yPercent: 0,
-          rotate: 0,
+          y: 0,
           opacity: 1,
-          duration: 1.2,
+          duration: 1.05,
           ease: "power4.out",
-          stagger: 0.07,
+          stagger: 0.06,
           delay,
           scrollTrigger: {
             trigger: root,
@@ -54,7 +53,10 @@ export function TextReveal({
   return (
     <Tag ref={rootRef as never} className={className}>
       {words.map((word, index) => (
-        <span key={`${word}-${index}`} className="reveal-clip inline-block mr-[0.28em]">
+        <span
+          key={`${word}-${index}`}
+          className="reveal-clip inline-block mr-[0.28em]"
+        >
           <span className="reveal-line inline-block will-change-transform">
             {word}
           </span>

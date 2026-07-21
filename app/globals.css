@@ -36,6 +36,7 @@
   --font-sans: var(--font-outfit);
   --font-display: var(--font-syne);
   --font-serif: var(--font-instrument);
+  --font-fa: var(--font-vazirmatn);
 }
 
 * {
@@ -112,6 +113,10 @@ img {
 
 .font-serif {
   font-family: var(--font-instrument), Georgia, serif;
+}
+
+.font-fa {
+  font-family: var(--font-vazirmatn), "Tahoma", sans-serif;
 }
 
 .site-shell {
@@ -431,28 +436,17 @@ img {
 .hero-title {
   margin: 0;
   font-weight: 800;
-  line-height: 0.92;
-  letter-spacing: -0.03em;
+  line-height: 0.94;
+  letter-spacing: -0.02em;
   overflow: visible;
-}
-
-.hero-title-line {
-  display: block;
-  overflow: hidden;
-  padding-inline: 0.06em;
-  margin-inline: -0.06em;
-  padding-bottom: 0.08em;
-  margin-bottom: -0.04em;
 }
 
 .hero-brand-line {
   display: block;
-  transform-origin: left center;
-  font-size: clamp(2.35rem, 8.5cqi, 5.75rem);
+  font-size: clamp(2.1rem, 5vw, 4.6rem);
   white-space: nowrap;
-  width: max-content;
-  max-width: 100%;
   overflow: visible;
+  opacity: 0;
 }
 
 .hero-brand-line--accent {
@@ -708,9 +702,13 @@ img {
 
 @media (min-width: 960px) {
   .hero-grid {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     gap: clamp(1.25rem, 2.5vw, 2.5rem);
     align-items: center;
+  }
+
+  .hero-brand-line {
+    font-size: clamp(2.4rem, 4.4vw, 4.75rem);
   }
 
   .hero-visual-wrap {
@@ -738,7 +736,7 @@ img {
 
 @media (min-width: 1200px) {
   .hero-brand-line {
-    font-size: clamp(3rem, 7.5cqi, 5.85rem);
+    font-size: clamp(2.8rem, 4.2vw, 5rem);
   }
 
   .hero-visual-wrap,
@@ -751,7 +749,7 @@ img {
 @media (max-width: 420px) {
   .hero-brand-line {
     white-space: normal;
-    font-size: clamp(2.2rem, 12vw, 2.85rem);
+    font-size: clamp(2rem, 11vw, 2.6rem);
   }
 }
 
@@ -861,8 +859,14 @@ img {
 }
 
 .reveal-clip {
-  overflow: hidden;
-  display: block;
+  display: inline-block;
+  overflow: visible;
+  padding-inline: 0.04em;
+}
+
+.reveal-line {
+  display: inline-block;
+  will-change: transform, opacity;
 }
 
 /* —— Custom cursor —— */
@@ -1082,6 +1086,13 @@ img {
   line-height: 1;
   color: var(--fg);
   will-change: transform, opacity, filter;
+}
+
+.intro-text--fa {
+  font-family: var(--font-vazirmatn), "Tahoma", sans-serif;
+  font-weight: 800;
+  letter-spacing: 0;
+  line-height: 1.15;
 }
 
 .intro-counter {

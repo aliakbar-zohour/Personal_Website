@@ -21,7 +21,7 @@ export function Hero() {
         [".hero-meta", ".hero-sub", ".hero-cta", ".hero-scroll", ".hero-visual"],
         { opacity: 0 },
       );
-      gsap.set(".hero-brand-line", { yPercent: 110 });
+      gsap.set(".hero-brand-line", { y: 48, opacity: 0 });
       gsap.set(".hero-meta", { y: 20, filter: "blur(8px)" });
       gsap.set(".hero-sub", { y: 24, filter: "blur(6px)" });
       gsap.set(".hero-cta", { y: 18, scale: 0.96 });
@@ -37,7 +37,7 @@ export function Hero() {
       })
         .to(
           ".hero-brand-line",
-          { yPercent: 0, duration: 1.2, stagger: 0.1 },
+          { y: 0, opacity: 1, duration: 1.15, stagger: 0.1 },
           "-=0.35",
         )
         .to(
@@ -72,13 +72,9 @@ export function Hero() {
           </p>
 
           <h1 className="hero-title font-display">
-            <span className="hero-title-line">
-              <span className="hero-brand-line">ALIAKBAR</span>
-            </span>
-            <span className="hero-title-line">
-              <span className="hero-brand-line hero-brand-line--accent">
-                ZOHOUR
-              </span>
+            <span className="hero-brand-line">ALIAKBAR</span>
+            <span className="hero-brand-line hero-brand-line--accent">
+              ZOHOUR
             </span>
           </h1>
 

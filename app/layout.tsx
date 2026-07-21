@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Outfit, Syne } from "next/font/google";
+import { Instrument_Serif, Outfit, Syne, Vazirmatn } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/providers/Providers";
@@ -34,6 +34,13 @@ const instrument = Instrument_Serif({
   subsets: ["latin"],
   weight: "400",
   style: ["normal", "italic"],
+  display: "swap",
+});
+
+const vazirmatn = Vazirmatn({
+  variable: "--font-vazirmatn",
+  subsets: ["arabic", "latin"],
+  weight: ["500", "700", "800", "900"],
   display: "swap",
 });
 
@@ -93,7 +100,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${syne.variable} ${instrument.variable} h-full antialiased`}
+      className={`${outfit.variable} ${syne.variable} ${instrument.variable} ${vazirmatn.variable} h-full antialiased`}
     >
       <body className="site-shell min-h-full font-sans">
         <a

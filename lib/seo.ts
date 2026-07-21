@@ -145,7 +145,7 @@ export function personJsonLd() {
     "@type": "Person",
     "@id": `${SITE_URL}/#person`,
     name: site.name,
-    alternateName: ["Ali Akbar Zohour", "علی اکبر ظهور", "aliakbarzohour"],
+    alternateName: ["Ali Akbar Zohour", "علی اکبر ظهور", "aliakbar-zohour", "aliakbarzohour"],
     url: SITE_URL,
     image: `${SITE_URL}/opengraph-image`,
     email: site.email,

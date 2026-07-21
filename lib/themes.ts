@@ -143,16 +143,16 @@ export const themes: ThemeDefinition[] = [
 export const DEFAULT_THEME: ThemeId = "signal";
 
 export const greetings = [
-  { lang: "English", text: "Hello" },
-  { lang: "Persian", text: "سلام" },
-  { lang: "Spanish", text: "Hola" },
-  { lang: "French", text: "Bonjour" },
-  { lang: "German", text: "Hallo" },
-  { lang: "Japanese", text: "こんにちは" },
-  { lang: "Chinese", text: "你好" },
-  { lang: "Hindi", text: "नमस्ते" },
-  { lang: "Arabic", text: "مرحبا" },
-  { lang: "Portuguese", text: "Olá" },
+  { lang: "English", text: "Hello", script: "latin" },
+  { lang: "Persian", text: "سلام", script: "arabic" },
+  { lang: "Spanish", text: "Hola", script: "latin" },
+  { lang: "French", text: "Bonjour", script: "latin" },
+  { lang: "German", text: "Hallo", script: "latin" },
+  { lang: "Japanese", text: "こんにちは", script: "cjk" },
+  { lang: "Chinese", text: "你好", script: "cjk" },
+  { lang: "Hindi", text: "नमस्ते", script: "devanagari" },
+  { lang: "Arabic", text: "مرحبا", script: "arabic" },
+  { lang: "Portuguese", text: "Olá", script: "latin" },
 ] as const;
 
 export const routeTitles: Record<string, string> = {
