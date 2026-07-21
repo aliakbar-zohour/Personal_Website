@@ -6,6 +6,7 @@ import { Atmosphere } from "./Atmosphere";
 import { ThemeProvider } from "./ThemeProvider";
 import { IntroProvider } from "./IntroProvider";
 import { IntroLoader } from "./IntroLoader";
+import { BackToTop } from "@/components/ui/BackToTop";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export function Providers({ children }: { children: React.ReactNode }) {
           <CustomCursor />
           <IntroLoader />
           {children}
+          <BackToTop />
         </SmoothScrollProvider>
       </IntroProvider>
     </ThemeProvider>
