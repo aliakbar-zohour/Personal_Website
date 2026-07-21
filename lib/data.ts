@@ -11,6 +11,7 @@ export const site = {
   socials: [
     { label: "GitHub", href: "https://github.com/aliakbarzohour" },
     { label: "LinkedIn", href: "https://linkedin.com/in/aliakbarzohour" },
+    { label: "Telegram", href: "https://t.me/aliakbarzohour20" },
     { label: "Medium", href: "https://medium.com/@aliakbarzohour" },
     { label: "X", href: "https://twitter.com/aliakbar_zohour" },
   ],

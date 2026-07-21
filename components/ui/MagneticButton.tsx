@@ -14,7 +14,7 @@ type MagneticButtonProps = HTMLMotionProps<"a"> & {
 
 export function MagneticButton({
   children,
-  strength = 0.35,
+  strength = 0.42,
   className = "",
   ...props
 }: MagneticButtonProps) {

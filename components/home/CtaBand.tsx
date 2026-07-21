@@ -10,7 +10,7 @@ export function CtaBand() {
       <div className="container">
         <div className="relative overflow-hidden border border-[var(--line)] px-6 py-16 md:px-14 md:py-24">
           <div
-            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[radial-gradient(circle,rgba(214,255,75,0.2),transparent_70%)]"
+            className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-[radial-gradient(circle,color-mix(in_srgb,var(--accent)_35%,transparent),transparent_70%)]"
             aria-hidden
           />
           <TextReveal
@@ -21,7 +21,9 @@ export function CtaBand() {
             <div className="relative z-10 mt-10">
               <MagneticButton
                 href="/contact"
-                className="inline-flex bg-[var(--accent)] px-7 py-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#0a0c10]"
+                data-cursor-label="Contact"
+                strength={0.45}
+                className="btn-accent inline-flex px-7 py-4 text-xs font-semibold tracking-[0.16em] uppercase"
               >
                 Get in touch
               </MagneticButton>

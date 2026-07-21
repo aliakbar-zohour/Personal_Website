@@ -29,12 +29,14 @@ export function TextReveal({
     const ctx = gsap.context(() => {
       gsap.fromTo(
         lines,
-        { yPercent: 110 },
+        { yPercent: 120, rotate: 3, opacity: 0.2 },
         {
           yPercent: 0,
-          duration: 1.1,
+          rotate: 0,
+          opacity: 1,
+          duration: 1.2,
           ease: "power4.out",
-          stagger: 0.08,
+          stagger: 0.07,
           delay,
           scrollTrigger: {
             trigger: root,

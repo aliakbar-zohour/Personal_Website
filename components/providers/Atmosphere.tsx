@@ -13,32 +13,48 @@ export function Atmosphere() {
 
     const ctx = gsap.context(() => {
       gsap.to(orbs[0], {
-        x: 80,
-        y: 40,
-        duration: 14,
+        x: 90,
+        y: 50,
+        duration: 12,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
       gsap.to(orbs[1], {
-        x: -60,
-        y: 70,
-        duration: 18,
+        x: -70,
+        y: 80,
+        duration: 16,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
       gsap.to(orbs[2], {
-        x: 40,
-        y: -50,
-        duration: 16,
+        x: 50,
+        y: -60,
+        duration: 14,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
     }, root);
 
-    return () => ctx.revert();
+    const onMove = (event: MouseEvent) => {
+      const x = (event.clientX / window.innerWidth - 0.5) * 28;
+      const y = (event.clientY / window.innerHeight - 0.5) * 20;
+      gsap.to(root, {
+        x: x * 0.35,
+        y: y * 0.35,
+        duration: 1.4,
+        ease: "power2.out",
+      });
+    };
+
+    window.addEventListener("mousemove", onMove);
+
+    return () => {
+      window.removeEventListener("mousemove", onMove);
+      ctx.revert();
+    };
   }, []);
 
   return (

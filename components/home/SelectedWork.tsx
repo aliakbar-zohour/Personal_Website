@@ -34,14 +34,15 @@ export function SelectedWork() {
 
         <ul>
           {featured.map((project, index) => (
-            <li key={project.slug} className="project-row">
+            <li key={project.slug} className="project-row group">
               <FadeIn delay={index * 0.06}>
                 <a
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-cursor="hover"
-                  className="group grid grid-cols-1 items-center gap-4 py-8 md:grid-cols-[80px_1.4fr_1fr_100px] md:gap-8 md:py-10"
+                  data-cursor="view"
+                  data-cursor-label="View"
+                  className="grid grid-cols-1 items-center gap-4 py-8 transition-transform duration-500 md:grid-cols-[80px_1.4fr_1fr_100px] md:gap-8 md:py-10 group-hover:md:translate-x-2"
                 >
                   <span className="text-xs tracking-[0.16em] text-[var(--fg-muted)]">
                     0{index + 1}

@@ -24,14 +24,15 @@ export function WorkPageClient() {
 
         <ul className="mt-16 md:mt-24">
           {projects.map((project, index) => (
-            <li key={project.slug} className="project-row">
+            <li key={project.slug} className="project-row group">
               <FadeIn delay={index * 0.05}>
                 <a
                   href={project.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  data-cursor="hover"
-                  className="group grid gap-6 py-10 md:grid-cols-[100px_1.2fr_1fr_auto] md:items-start md:gap-10 md:py-14"
+                  data-cursor="view"
+                  data-cursor-label="Open"
+                  className="group grid gap-6 py-10 transition-transform duration-500 md:grid-cols-[100px_1.2fr_1fr_auto] md:items-start md:gap-10 md:py-14 group-hover:md:translate-x-3"
                 >
                   <span
                     className="font-display text-4xl font-bold opacity-30 transition-opacity group-hover:opacity-100"

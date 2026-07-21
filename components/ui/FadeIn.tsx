@@ -10,7 +10,7 @@ export function FadeIn({
   children,
   className = "",
   delay = 0,
-  y = 40,
+  y = 48,
 }: {
   children: React.ReactNode;
   className?: string;
@@ -26,16 +26,17 @@ export function FadeIn({
     const ctx = gsap.context(() => {
       gsap.fromTo(
         el,
-        { opacity: 0, y },
+        { opacity: 0, y, filter: "blur(10px)" },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
+          filter: "blur(0px)",
+          duration: 1.15,
           delay,
           ease: "power3.out",
           scrollTrigger: {
             trigger: el,
-            start: "top 90%",
+            start: "top 88%",
           },
         },
       );

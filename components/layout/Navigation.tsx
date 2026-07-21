@@ -6,11 +6,15 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { navLinks, site } from "@/lib/data";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
+import { themes, type ThemeId } from "@/lib/themes";
+import { useTheme } from "@/components/providers/ThemeProvider";
 
 export function Navigation() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setOpen(false);
@@ -34,8 +38,9 @@ export function Navigation() {
     <>
       <header
         className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ${
-          scrolled ? "backdrop-blur-md bg-[rgba(8,10,14,0.72)]" : "bg-transparent"
+          scrolled ? "backdrop-blur-md" : "bg-transparent"
         }`}
+        style={scrolled ? { background: "var(--nav-blur)" } : undefined}
       >
         <div className="container flex items-center justify-between py-5 md:py-6">
           <Link
@@ -70,9 +75,11 @@ export function Navigation() {
             })}
           </nav>
 
-          <div className="hidden md:block">
+          <div className="hidden items-center gap-3 md:flex">
+            <ThemeSwitcher />
             <MagneticButton
               href="/contact"
+              data-cursor-label="Talk"
               className="inline-flex items-center gap-2 border border-[var(--line)] px-5 py-2.5 text-xs tracking-[0.16em] uppercase transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
             >
               Let&apos;s talk
@@ -103,7 +110,8 @@ export function Navigation() {
       <AnimatePresence>
         {open && (
           <motion.div
-            className="fixed inset-0 z-40 flex flex-col justify-end bg-[#050608] px-6 pb-12 pt-28 md:hidden"
+            className="fixed inset-0 z-40 flex flex-col justify-end px-6 pb-12 pt-28 md:hidden"
+            style={{ background: "var(--bg)" }}
             initial={{ clipPath: "inset(0 0 100% 0)" }}
             animate={{ clipPath: "inset(0 0 0% 0)" }}
             exit={{ clipPath: "inset(0 0 100% 0)" }}
@@ -127,7 +135,29 @@ export function Navigation() {
                 </motion.div>
               ))}
             </nav>
-            <p className="mt-16 text-sm text-[var(--fg-muted)]">{site.location}</p>
+
+            <div className="mt-10 flex flex-wrap gap-2">
+              {themes.map((item) => (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => setTheme(item.id as ThemeId)}
+                  className={`flex items-center gap-2 border px-3 py-2 text-[10px] tracking-[0.14em] uppercase ${
+                    theme === item.id
+                      ? "border-[var(--accent)] text-[var(--accent)]"
+                      : "border-[var(--line)] text-[var(--fg-muted)]"
+                  }`}
+                >
+                  <span
+                    className="h-2 w-2 rounded-full"
+                    style={{ background: item.swatch }}
+                  />
+                  {item.label}
+                </button>
+              ))}
+            </div>
+
+            <p className="mt-10 text-sm text-[var(--fg-muted)]">{site.location}</p>
           </motion.div>
         )}
       </AnimatePresence>
