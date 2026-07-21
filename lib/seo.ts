@@ -3,7 +3,7 @@ import { site, skills, projects, experience } from "@/lib/data";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://aliakbarzohour.com";
+  "https://aliakbarzohour.vercel.app";
 
 export const seo = {
   url: SITE_URL,

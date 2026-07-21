@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container section-pad !pt-16 !pb-10">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
           <div>
-            <p className="font-display text-4xl font-bold tracking-tight md:text-5xl">
+            <p className="font-display text-[clamp(1.85rem,4vw,3rem)] font-bold tracking-tight leading-[1.1]">
               Let&apos;s build something
               <span className="font-serif italic text-[var(--accent)]"> unforgettable</span>.
             </p>
