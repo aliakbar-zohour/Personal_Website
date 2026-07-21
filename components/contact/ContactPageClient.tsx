@@ -127,7 +127,7 @@ export function ContactPageClient() {
             <button
               type="submit"
               data-cursor="hover"
-              className="inline-flex w-full items-center justify-center bg-[var(--accent)] px-6 py-4 text-xs font-semibold tracking-[0.16em] uppercase text-[#0a0c10] transition-opacity hover:opacity-90"
+              className="btn-accent inline-flex w-full items-center justify-center px-6 py-4 text-xs font-semibold tracking-[0.16em] uppercase transition-opacity hover:opacity-90"
             >
               {sent ? "Opening mail…" : "Send message"}
             </button>

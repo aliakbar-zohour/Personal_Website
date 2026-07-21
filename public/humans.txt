@@ -1,0 +1,12 @@
+/* TEAM */
+Creator: Aliakbar Zohour
+Site: https://aliakbarzohour.com
+Contact: hello@aliakbarzohour.com
+Telegram: https://t.me/aliakbarzohour20
+Location: Tehran, Iran
+
+/* SITE */
+Standards: HTML5, CSS3, Next.js
+Components: React, GSAP, Framer Motion
+Last update: 2026
+Language: English

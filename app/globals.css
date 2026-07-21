@@ -311,13 +311,17 @@ img {
   width: 8px;
   height: 8px;
   background: var(--accent);
-  mix-blend-mode: var(--cursor-blend);
+  mix-blend-mode: normal;
   z-index: 3;
   transition:
     width 0.35s var(--ease-out-expo),
     height 0.35s var(--ease-out-expo),
     background 0.3s ease,
     opacity 0.25s ease;
+}
+
+.cursor-dot[data-mode="default"] {
+  mix-blend-mode: var(--cursor-blend);
 }
 
 .cursor-ring {
@@ -327,6 +331,7 @@ img {
   z-index: 2;
   display: grid;
   place-items: center;
+  mix-blend-mode: normal;
   transition:
     width 0.45s var(--ease-out-expo),
     height 0.45s var(--ease-out-expo),
@@ -342,6 +347,7 @@ img {
   opacity: 0;
   z-index: 1;
   filter: blur(1px);
+  mix-blend-mode: normal;
 }
 
 .cursor-dot[data-mode="hover"],
@@ -349,13 +355,15 @@ img {
   width: 0;
   height: 0;
   opacity: 0;
+  mix-blend-mode: normal;
 }
 
 .cursor-ring[data-mode="hover"] {
   width: 64px;
   height: 64px;
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  background: color-mix(in srgb, var(--bg) 75%, transparent);
+  backdrop-filter: blur(4px);
 }
 
 .cursor-ring[data-mode="view"] {
@@ -516,9 +524,14 @@ img {
   animation: introProgress 6.5s linear forwards;
 }
 
-.btn-accent {
-  background: var(--accent);
-  color: var(--btn-on-accent);
+.btn-accent,
+a.btn-accent,
+button.btn-accent {
+  background-color: var(--accent) !important;
+  color: var(--btn-on-accent) !important;
+  -webkit-text-fill-color: var(--btn-on-accent) !important;
+  isolation: isolate;
+  mix-blend-mode: normal;
 }
 
 @media (prefers-reduced-motion: reduce) {

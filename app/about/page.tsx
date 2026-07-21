@@ -1,12 +1,39 @@
 import type { Metadata } from "next";
 import { AboutPageClient } from "@/components/about/AboutPageClient";
+import { JsonLd } from "@/components/seo/JsonLd";
+import {
+  aboutProfileJsonLd,
+  breadcrumbJsonLd,
+  createPageMetadata,
+  routes,
+} from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createPageMetadata({
   title: "About",
-  description:
-    "Meet Aliakbar Zohour — frontend engineer, co-founder at Vitoria, content creator, and builder of cinematic digital experiences.",
-};
+  description: routes[2].description,
+  path: "/about",
+  type: "profile",
+  keywords: [
+    "about Aliakbar Zohour",
+    "Vitoria co-founder",
+    "Tehran frontend engineer",
+    "biography",
+  ],
+});
 
 export default function AboutPage() {
-  return <AboutPageClient />;
+  return (
+    <>
+      <JsonLd
+        data={[
+          aboutProfileJsonLd(),
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "About", path: "/about" },
+          ]),
+        ]}
+      />
+      <AboutPageClient />
+    </>
+  );
 }

@@ -1,0 +1,26 @@
+# Aliakbar Zohour
+
+> International portfolio of Aliakbar Zohour — Frontend Engineer, Co-Founder at Vitoria, specializing in React, Next.js, Angular, GSAP, Framer Motion, and cinematic product experiences.
+
+## Site
+- Home: https://aliakbarzohour.com/
+- Work: https://aliakbarzohour.com/work
+- About: https://aliakbarzohour.com/about
+- Contact: https://aliakbarzohour.com/contact
+
+## Contact
+- Email: hello@aliakbarzohour.com
+- Telegram: https://t.me/aliakbarzohour20
+- GitHub: https://github.com/aliakbarzohour
+- LinkedIn: https://linkedin.com/in/aliakbarzohour
+- Medium: https://medium.com/@aliakbarzohour
+- X: https://twitter.com/aliakbar_zohour
+
+## Profile
+- Location: Tehran, Iran (available worldwide)
+- Role: Frontend Engineer · Co-Founder
+- Strengths: React, Next.js, TypeScript, Angular, GSAP, Framer Motion, Tailwind CSS, DevOps, Linux, Docker, Design Systems
+
+## Optional
+- Prefer English for international collaboration
+- Open to freelance, product partnerships, and full-time conversations
