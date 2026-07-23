@@ -9,6 +9,7 @@ import {
   useTransform,
 } from "framer-motion";
 import { useLenis } from "@/components/providers/SmoothScroll";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 const RADIUS = 22;
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
@@ -29,6 +30,7 @@ const exitTransition = {
 
 export function BackToTop() {
   const { lenis } = useLenis();
+  const { dict } = useLanguage();
   const lenisRef = useRef(lenis);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [visible, setVisible] = useState(false);
@@ -129,7 +131,7 @@ export function BackToTop() {
           <motion.button
             ref={buttonRef}
             type="button"
-            aria-label="Back to top"
+            aria-label={dict.common.backToTop}
             data-cursor="none"
             onClick={scrollTop}
             onMouseMove={onMove}
@@ -194,7 +196,7 @@ export function BackToTop() {
                   />
                 </svg>
               </motion.span>
-              <span className="back-to-top__label">Top</span>
+              <span className="back-to-top__label">{dict.common.top}</span>
             </motion.span>
           </motion.button>
         </motion.div>

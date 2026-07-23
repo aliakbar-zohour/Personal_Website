@@ -1,26 +1,36 @@
 "use client";
 
 import Link from "next/link";
-import { about, site } from "@/lib/data";
+import { site } from "@/lib/data";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
 import { MagneticButton } from "@/components/ui/MagneticButton";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function AboutPreview() {
+  const { dict } = useLanguage();
+
+  const stats = [
+    { label: dict.stats.years, value: dict.stats.yearsValue },
+    { label: dict.stats.repos, value: dict.stats.reposValue },
+    { label: dict.stats.focus, value: dict.stats.focusValue },
+    { label: dict.stats.based, value: dict.stats.basedValue },
+  ];
+
   return (
     <section className="section-pad border-t border-[var(--line)]">
       <div className="container grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
         <div>
           <p className="mb-3 text-xs tracking-[0.22em] uppercase text-[var(--accent)]">
-            About
+            {dict.aboutPreview.eyebrow}
           </p>
           <TextReveal
-            text="Builder. Operator. One-person army."
+            text={dict.aboutPreview.headline}
             className="font-display max-w-xl text-4xl font-bold tracking-tight md:text-5xl"
           />
           <FadeIn delay={0.1}>
             <p className="mt-8 max-w-lg text-lg leading-relaxed text-[var(--fg-muted)]">
-              {about.intro}
+              {dict.aboutPreview.intro}
             </p>
           </FadeIn>
           <FadeIn delay={0.18}>
@@ -29,7 +39,7 @@ export function AboutPreview() {
                 href="/about"
                 className="inline-flex border border-[var(--line)] px-6 py-3.5 text-xs tracking-[0.16em] uppercase transition-colors hover:border-[var(--accent)] hover:text-[var(--accent)]"
               >
-                More about me
+                {dict.aboutPreview.more}
               </MagneticButton>
               <Link
                 href={site.socials[0].href}
@@ -45,7 +55,7 @@ export function AboutPreview() {
         </div>
 
         <div className="grid grid-cols-2 gap-px bg-[var(--line)]">
-          {about.stats.map((stat, index) => (
+          {stats.map((stat, index) => (
             <FadeIn key={stat.label} delay={0.08 * index}>
               <div className="flex min-h-[140px] flex-col justify-between bg-[var(--bg)] p-6 md:min-h-[180px] md:p-8">
                 <p className="text-xs tracking-[0.16em] uppercase text-[var(--fg-muted)]">

@@ -55,7 +55,7 @@ export function TextReveal({
       {words.map((word, index) => (
         <span
           key={`${word}-${index}`}
-          className="reveal-clip inline-block mr-[0.28em]"
+          className="reveal-clip inline-block me-[0.28em]"
         >
           <span className="reveal-line inline-block will-change-transform">
             {word}

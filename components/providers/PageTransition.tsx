@@ -3,25 +3,38 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { getRouteTitle } from "@/lib/themes";
+import { getRouteTitle } from "@/lib/i18n";
 import { useIntro } from "./IntroProvider";
+import { useLanguage } from "./LanguageProvider";
 
 export function PageTransition({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const { ready } = useIntro();
+  const { locale, dict } = useLanguage();
   const [displayChildren, setDisplayChildren] = useState(children);
-  const [title, setTitle] = useState(getRouteTitle(pathname));
+  const [title, setTitle] = useState(getRouteTitle(pathname, locale));
   const [active, setActive] = useState(false);
   const isFirst = useRef(true);
+  const prevPath = useRef(pathname);
 
   useEffect(() => {
     if (isFirst.current) {
       isFirst.current = false;
       setDisplayChildren(children);
+      setTitle(getRouteTitle(pathname, locale));
+      prevPath.current = pathname;
       return;
     }
 
-    setTitle(getRouteTitle(pathname));
+    // Language swaps are handled by LanguageTransition — skip route overlay
+    if (prevPath.current === pathname) {
+      setDisplayChildren(children);
+      setTitle(getRouteTitle(pathname, locale));
+      return;
+    }
+
+    prevPath.current = pathname;
+    setTitle(getRouteTitle(pathname, locale));
     setActive(true);
 
     const swap = window.setTimeout(() => {
@@ -37,7 +50,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       window.clearTimeout(swap);
       window.clearTimeout(end);
     };
-  }, [pathname, children]);
+  }, [pathname, children, locale]);
 
   return (
     <>
@@ -74,7 +87,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
                 animate={{ opacity: [0, 1, 1, 0], y: [12, 0, 0, -8] }}
                 transition={{ duration: 1.1, times: [0, 0.25, 0.7, 1], delay: 0.28 }}
               >
-                Aliakbar Zohour
+                {dict.site.name}
               </motion.p>
               <motion.h2
                 className="page-transition__title font-display"
@@ -105,7 +118,7 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
       </AnimatePresence>
 
       <motion.div
-        key={`content-${pathname}`}
+        key={`content-${pathname}-${locale}`}
         initial={false}
         animate={
           ready
@@ -113,7 +126,11 @@ export function PageTransition({ children }: { children: React.ReactNode }) {
                 opacity: 1,
                 y: 0,
                 filter: "blur(0px)",
-                transition: { duration: 0.85, delay: active ? 0.55 : 0, ease: [0.16, 1, 0.3, 1] },
+                transition: {
+                  duration: 0.85,
+                  delay: active ? 0.55 : 0,
+                  ease: [0.16, 1, 0.3, 1],
+                },
               }
             : { opacity: 0, y: 20, filter: "blur(8px)" }
         }

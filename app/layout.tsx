@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
-import { Instrument_Serif, Outfit, Syne, Vazirmatn } from "next/font/google";
+import localFont from "next/font/local";
+import { Instrument_Serif, Outfit, Syne } from "next/font/google";
 import { Navigation } from "@/components/layout/Navigation";
 import { Footer } from "@/components/layout/Footer";
 import { Providers } from "@/components/providers/Providers";
@@ -37,10 +38,50 @@ const instrument = Instrument_Serif({
   display: "swap",
 });
 
-const vazirmatn = Vazirmatn({
-  variable: "--font-vazirmatn",
-  subsets: ["arabic", "latin"],
-  weight: ["500", "700", "800", "900"],
+const yekanBakh = localFont({
+  src: [
+    {
+      path: "../public/fonts/YekanBakhFaNum-Thin.otf",
+      weight: "100",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/YekanBakhFaNum-Light.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/YekanBakhFaNum-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/YekanBakhFaNum-SemiBold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/YekanBakhFaNum-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/YekanBakhFaNum-ExtraBold.otf",
+      weight: "800",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/YekanBakhFaNum-Black.otf",
+      weight: "900",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/YekanBakhFaNum-ExtraBlack.otf",
+      weight: "950",
+      style: "normal",
+    },
+  ],
+  variable: "--font-yekan",
   display: "swap",
 });
 
@@ -100,8 +141,18 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${syne.variable} ${instrument.variable} ${vazirmatn.variable} h-full antialiased`}
+      dir="ltr"
+      data-locale="en"
+      className={`${outfit.variable} ${syne.variable} ${instrument.variable} ${yekanBakh.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var l=localStorage.getItem("az-locale");if(l==="fa"){var r=document.documentElement;r.lang="fa";r.dir="rtl";r.dataset.locale="fa";}}catch(e){}})();`,
+          }}
+        />
+      </head>
       <body className="site-shell min-h-full font-sans">
         <a
           href="#main-content"

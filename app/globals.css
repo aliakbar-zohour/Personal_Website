@@ -36,7 +36,7 @@
   --font-sans: var(--font-outfit);
   --font-display: var(--font-syne);
   --font-serif: var(--font-instrument);
-  --font-fa: var(--font-vazirmatn);
+  --font-fa: var(--font-yekan);
 }
 
 * {
@@ -116,7 +116,48 @@ img {
 }
 
 .font-fa {
-  font-family: var(--font-vazirmatn), "Tahoma", sans-serif;
+  font-family: var(--font-yekan), "Tahoma", sans-serif;
+}
+
+/* —— Locale: Persian / RTL —— */
+html[data-locale="fa"] body,
+html[lang="fa"] body {
+  font-family: var(--font-yekan), "Tahoma", sans-serif;
+}
+
+html[data-locale="fa"] .font-display,
+html[data-locale="fa"] .font-serif,
+html[lang="fa"] .font-display,
+html[lang="fa"] .font-serif {
+  font-family: var(--font-yekan), "Tahoma", sans-serif;
+  letter-spacing: -0.01em;
+}
+
+html[data-locale="fa"] .font-serif,
+html[lang="fa"] .font-serif {
+  font-style: normal;
+}
+
+html[data-locale="fa"] .uppercase,
+html[lang="fa"] .uppercase {
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+
+html[data-locale="fa"] .nav-cta,
+html[data-locale="fa"] .nav-link,
+html[data-locale="fa"] .nav-theme-chip,
+html[data-locale="fa"] .hero-meta,
+html[data-locale="fa"] .hero-cta,
+html[data-locale="fa"] .hero-scroll,
+html[lang="fa"] .nav-cta,
+html[lang="fa"] .nav-link,
+html[lang="fa"] .nav-theme-chip,
+html[lang="fa"] .hero-meta,
+html[lang="fa"] .hero-cta,
+html[lang="fa"] .hero-scroll {
+  letter-spacing: 0.02em;
+  text-transform: none;
 }
 
 .site-shell {
@@ -304,6 +345,40 @@ img {
   color: var(--accent);
 }
 
+.lang-switch {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.65rem;
+  border: 1px solid var(--line);
+  padding: 0.65rem 0.7rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    opacity 0.3s ease;
+}
+
+.lang-switch:hover:not(:disabled) {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.lang-switch:disabled {
+  opacity: 0.45;
+}
+
+.lang-switch__code {
+  line-height: 1;
+}
+
+html[data-locale="fa"] .lang-switch,
+html[lang="fa"] .lang-switch {
+  letter-spacing: 0.08em;
+}
+
+
 .nav-toggle {
   display: flex;
   flex-direction: column;
@@ -349,11 +424,18 @@ img {
   gap: 0.5rem;
 }
 
+.nav-mobile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
 .nav-mobile-themes {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
-  margin-top: 2.5rem;
+  margin-top: 1.25rem;
 }
 
 .nav-theme-chip {
@@ -1051,6 +1133,72 @@ img {
   transform-origin: center;
 }
 
+/* —— Language transition —— */
+.lang-transition {
+  position: fixed;
+  inset: 0;
+  z-index: 110;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.lang-transition__panels {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.lang-transition__panel {
+  background: var(--transition-panel);
+}
+
+.lang-transition__center {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  text-align: center;
+  gap: 0.75rem;
+}
+
+.lang-transition__eyebrow {
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.lang-transition__eyebrow--fa {
+  letter-spacing: 0.08em;
+  text-transform: none;
+  font-family: var(--font-yekan), "Tahoma", sans-serif;
+}
+
+.lang-transition__title {
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: var(--fg);
+}
+
+.lang-transition__title--fa {
+  font-family: var(--font-yekan), "Tahoma", sans-serif;
+  letter-spacing: 0;
+  line-height: 1.1;
+  font-weight: 900;
+}
+
+.lang-transition__line {
+  width: min(180px, 40vw);
+  height: 2px;
+  background: var(--accent);
+  transform-origin: center;
+}
+
 /* —— Intro loader —— */
 .intro-loader {
   position: fixed;
@@ -1105,7 +1253,7 @@ img {
 }
 
 .intro-text--fa {
-  font-family: var(--font-vazirmatn), "Tahoma", sans-serif;
+  font-family: var(--font-yekan), "Tahoma", sans-serif;
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1.15;

@@ -4,12 +4,13 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { IranMap } from "@/components/home/IranMap";
-import { site } from "@/lib/data";
 import { useIntro } from "@/components/providers/IntroProvider";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function Hero() {
   const rootRef = useRef<HTMLElement>(null);
   const { ready } = useIntro();
+  const { dict, locale } = useLanguage();
 
   useEffect(() => {
     if (!ready) return;
@@ -61,39 +62,39 @@ export function Hero() {
     return () => {
       ctx.revert();
     };
-  }, [ready]);
+  }, [ready, locale]);
 
   return (
     <section ref={rootRef} className="hero">
       <div className="container hero-grid">
         <div className="hero-copy">
           <p className="hero-meta">
-            {site.role} · {site.location}
+            {dict.site.role} · {dict.site.location}
           </p>
 
           <h1 className="hero-title font-display">
-            <span className="hero-brand-line">ALIAKBAR</span>
+            <span className="hero-brand-line">{dict.site.firstName}</span>
             <span className="hero-brand-line hero-brand-line--accent">
-              ZOHOUR
+              {dict.site.lastName}
             </span>
           </h1>
 
           <div className="hero-actions">
-            <p className="hero-sub">{site.tagline}</p>
+            <p className="hero-sub">{dict.site.tagline}</p>
             <div className="hero-ctas">
               <MagneticButton
                 href="/work"
                 data-cursor="none"
                 className="hero-cta btn-accent inline-flex items-center px-6 py-3.5 text-xs font-semibold tracking-[0.16em] uppercase"
               >
-                View work
+                {dict.hero.viewWork}
               </MagneticButton>
               <MagneticButton
                 href="/contact"
                 data-cursor="none"
                 className="hero-cta hero-cta--ghost inline-flex items-center px-6 py-3.5 text-xs tracking-[0.16em] uppercase"
               >
-                Contact
+                {dict.hero.contact}
               </MagneticButton>
             </div>
           </div>
@@ -102,11 +103,11 @@ export function Hero() {
             <span className="hero-scroll-line" aria-hidden>
               <span />
             </span>
-            Scroll to explore
+            {dict.hero.scroll}
           </div>
         </div>
 
-        <div className="hero-visual-wrap">
+        <div className="hero-visual-wrap" dir="ltr">
           <div className="hero-visual">
             <IranMap />
           </div>

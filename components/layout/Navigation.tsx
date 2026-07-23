@@ -4,17 +4,25 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { navLinks, site } from "@/lib/data";
 import { MagneticButton } from "@/components/ui/MagneticButton";
 import { ThemeSwitcher } from "@/components/ui/ThemeSwitcher";
+import { LanguageSwitcher } from "@/components/ui/LanguageSwitcher";
 import { themes, type ThemeId } from "@/lib/themes";
 import { useTheme } from "@/components/providers/ThemeProvider";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function Navigation() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { dict } = useLanguage();
+
+  const navLinks = [
+    { label: dict.nav.work, href: "/work" },
+    { label: dict.nav.about, href: "/about" },
+    { label: dict.nav.contact, href: "/contact" },
+  ];
 
   useEffect(() => {
     setOpen(false);
@@ -45,10 +53,10 @@ export function Navigation() {
             data-cursor="hover"
             className="nav-brand font-display"
           >
-            {site.name}
+            {dict.site.name}
           </Link>
 
-          <nav className="nav-links" aria-label="Primary">
+          <nav className="nav-links" aria-label={dict.nav.primaryAria}>
             {navLinks.map((link) => {
               const active = pathname === link.href;
               return (
@@ -74,13 +82,14 @@ export function Navigation() {
               data-cursor="none"
               className="nav-cta"
             >
-              Build with me
+              {dict.nav.cta}
             </MagneticButton>
+            <LanguageSwitcher />
           </div>
 
           <button
             type="button"
-            aria-label={open ? "Close menu" : "Open menu"}
+            aria-label={open ? dict.nav.closeMenu : dict.nav.openMenu}
             className="nav-toggle"
             onClick={() => setOpen((v) => !v)}
             data-cursor="hover"
@@ -119,6 +128,10 @@ export function Navigation() {
               ))}
             </nav>
 
+            <div className="nav-mobile-actions">
+              <LanguageSwitcher />
+            </div>
+
             <div className="nav-mobile-themes">
               {themes.map((item) => (
                 <button
@@ -135,7 +148,9 @@ export function Navigation() {
               ))}
             </div>
 
-            <p className="mt-10 text-sm text-[var(--fg-muted)]">{site.location}</p>
+            <p className="mt-10 text-sm text-[var(--fg-muted)]">
+              {dict.site.location}
+            </p>
           </motion.div>
         )}
       </AnimatePresence>

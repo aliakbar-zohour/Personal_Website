@@ -1,22 +1,30 @@
+"use client";
+
 import Link from "next/link";
 import { site } from "@/lib/data";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function Footer() {
+  const { dict } = useLanguage();
+
   return (
     <footer className="border-t border-[var(--line)]">
       <div className="container section-pad !pt-16 !pb-10">
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
           <div>
             <p className="font-display text-[clamp(1.85rem,4vw,3rem)] font-bold tracking-tight leading-[1.1]">
-              Let&apos;s turn your idea into a
-              <span className="font-serif italic text-[var(--accent)]"> business</span>.
+              {dict.footer.lead}{" "}
+              <span className="font-serif italic text-[var(--accent)]">
+                {dict.footer.leadAccent}
+              </span>
+              .
             </p>
             <Link
               href="/contact"
               data-cursor="hover"
               className="line-link mt-8 inline-flex text-sm tracking-[0.16em] uppercase text-[var(--fg-muted)]"
             >
-              Start building →
+              {dict.footer.start}
             </Link>
           </div>
 
@@ -37,7 +45,7 @@ export function Footer() {
               ))}
             </ul>
             <p className="text-xs tracking-[0.14em] uppercase text-[var(--fg-muted)]">
-              © {new Date().getFullYear()} {site.name}
+              © {new Date().getFullYear()} {dict.site.name}
             </p>
           </div>
         </div>

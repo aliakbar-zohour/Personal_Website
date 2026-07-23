@@ -4,9 +4,11 @@ import { FormEvent, useState } from "react";
 import { site } from "@/lib/data";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { TextReveal } from "@/components/ui/TextReveal";
+import { useLanguage } from "@/components/providers/LanguageProvider";
 
 export function ContactPageClient() {
   const [sent, setSent] = useState(false);
+  const { dict } = useLanguage();
 
   const onSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -16,9 +18,9 @@ export function ContactPageClient() {
     const email = String(data.get("email") || "");
     const message = String(data.get("message") || "");
 
-    const subject = encodeURIComponent(`Portfolio inquiry from ${name}`);
+    const subject = encodeURIComponent(`${dict.contact.mailSubject} ${name}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\n\n${message}`,
+      `${dict.contact.mailName}: ${name}\n${dict.contact.mailEmail}: ${email}\n\n${message}`,
     );
     window.location.href = `mailto:${site.email}?subject=${subject}&body=${body}`;
     setSent(true);
@@ -29,16 +31,15 @@ export function ContactPageClient() {
       <div className="container grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
         <div>
           <p className="mb-3 text-xs tracking-[0.22em] uppercase text-[var(--accent)]">
-            Contact
+            {dict.contact.eyebrow}
           </p>
           <TextReveal
-            text="Tell me about the business you want to build."
+            text={dict.contact.headline}
             className="font-display max-w-xl text-4xl font-bold tracking-tight md:text-6xl"
           />
           <FadeIn delay={0.1}>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-[var(--fg-muted)]">
-              Available for founders and teams ready to turn an idea into a fully digital,
-              coded, and automated business — worldwide.
+              {dict.contact.body}
             </p>
           </FadeIn>
 
@@ -46,7 +47,7 @@ export function ContactPageClient() {
             <div className="mt-12 space-y-6">
               <div>
                 <p className="text-xs tracking-[0.16em] uppercase text-[var(--fg-muted)]">
-                  Email
+                  {dict.contact.email}
                 </p>
                 <a
                   href={`mailto:${site.email}`}
@@ -58,7 +59,7 @@ export function ContactPageClient() {
               </div>
               <div>
                 <p className="text-xs tracking-[0.16em] uppercase text-[var(--fg-muted)]">
-                  Social
+                  {dict.contact.social}
                 </p>
                 <ul className="mt-3 flex flex-wrap gap-5">
                   {site.socials.map((social) => (
@@ -87,7 +88,7 @@ export function ContactPageClient() {
           >
             <label className="mb-6 block">
               <span className="mb-2 block text-xs tracking-[0.16em] uppercase text-[var(--fg-muted)]">
-                Name
+                {dict.contact.name}
               </span>
               <input
                 required
@@ -95,12 +96,12 @@ export function ContactPageClient() {
                 type="text"
                 data-cursor="hover"
                 className="w-full border-b border-[var(--line)] bg-transparent py-3 outline-none transition-colors focus:border-[var(--accent)]"
-                placeholder="Your name"
+                placeholder={dict.contact.namePlaceholder}
               />
             </label>
             <label className="mb-6 block">
               <span className="mb-2 block text-xs tracking-[0.16em] uppercase text-[var(--fg-muted)]">
-                Email
+                {dict.contact.emailLabel}
               </span>
               <input
                 required
@@ -108,12 +109,12 @@ export function ContactPageClient() {
                 type="email"
                 data-cursor="hover"
                 className="w-full border-b border-[var(--line)] bg-transparent py-3 outline-none transition-colors focus:border-[var(--accent)]"
-                placeholder="you@company.com"
+                placeholder={dict.contact.emailPlaceholder}
               />
             </label>
             <label className="mb-8 block">
               <span className="mb-2 block text-xs tracking-[0.16em] uppercase text-[var(--fg-muted)]">
-                Message
+                {dict.contact.message}
               </span>
               <textarea
                 required
@@ -121,7 +122,7 @@ export function ContactPageClient() {
                 rows={5}
                 data-cursor="hover"
                 className="w-full resize-none border-b border-[var(--line)] bg-transparent py-3 outline-none transition-colors focus:border-[var(--accent)]"
-                placeholder="Project details, timeline, goals…"
+                placeholder={dict.contact.messagePlaceholder}
               />
             </label>
             <button
@@ -129,7 +130,7 @@ export function ContactPageClient() {
               data-cursor="hover"
               className="btn-accent inline-flex w-full items-center justify-center px-6 py-4 text-xs font-semibold tracking-[0.16em] uppercase transition-opacity hover:opacity-90"
             >
-              {sent ? "Opening mail…" : "Send message"}
+              {sent ? dict.contact.sending : dict.contact.send}
             </button>
           </form>
         </FadeIn>

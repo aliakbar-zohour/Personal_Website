@@ -10,6 +10,8 @@ import { useRef } from "react";
 
 type MagneticButtonProps = HTMLMotionProps<"a"> & {
   strength?: number;
+  "data-cursor"?: string;
+  "data-cursor-label"?: string;
 };
 
 export function MagneticButton({
