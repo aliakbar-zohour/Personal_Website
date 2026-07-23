@@ -16,7 +16,7 @@ export const metadata: Metadata = createPageMetadata({
   keywords: [
     "about Aliakbar Zohour",
     "Vitoria co-founder",
-    "Tehran frontend engineer",
+    "digital business builder Tehran",
     "biography",
   ],
 });

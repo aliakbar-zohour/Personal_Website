@@ -1,13 +1,14 @@
 export const site = {
   name: "Aliakbar Zohour",
   shortName: "AZ",
-  title: "Aliakbar Zohour — Frontend Engineer & Co-Founder",
+  title: "Aliakbar Zohour — Digital Business Builder",
   description:
-    "International portfolio of Aliakbar Zohour — frontend engineer, co-founder at Vitoria, crafting cinematic product experiences with React, Next.js, and motion.",
+    "Aliakbar Zohour — a one-person army who turns ideas into fully digital, professional, coded, and automated businesses. Python, Go, TypeScript, AI, and design — building revenue systems for people and brands.",
   location: "Tehran · Available worldwide",
   email: "hello@aliakbarzohour.com",
-  role: "Frontend Engineer · Co-Founder",
-  tagline: "Crafting cinematic digital experiences for ambitious brands.",
+  role: "Digital Business Builder · One-Person Army",
+  tagline:
+    "I take an idea and turn it into a fully digital, coded, and automated business.",
   socials: [
     { label: "GitHub", href: "https://github.com/aliakbar-zohour" },
     { label: "LinkedIn", href: "https://linkedin.com/in/aliakbarzohour" },
@@ -24,18 +25,18 @@ export const navLinks = [
 ] as const;
 
 export const skills = [
+  "Python",
+  "Go",
+  "JavaScript",
+  "TypeScript",
   "React",
   "Next.js",
-  "TypeScript",
-  "Angular",
-  "GSAP",
-  "Framer Motion",
-  "Tailwind CSS",
   "Node.js",
-  "DevOps",
-  "Linux",
-  "Docker",
+  "AI & Automation",
   "Design Systems",
+  "Product Design",
+  "DevOps",
+  "Docker",
 ] as const;
 
 export const experience = [
@@ -44,14 +45,14 @@ export const experience = [
     company: "Vitoria",
     period: "Aug 2024 — Present",
     description:
-      "Building a software development company focused on product craft, engineering quality, and modern web experiences.",
+      "Building digital businesses end to end — from idea and product architecture to coded systems, automation, and revenue-ready launches.",
   },
   {
     role: "Front-End Developer",
     company: "Sourena Games Studio",
     period: "Apr 2024 — Jul 2024",
     description:
-      "Shipped frontend experiences for a multi-market game studio and publisher spanning Iran, Turkey, Poland, and the US.",
+      "Shipped product interfaces for a multi-market game studio and publisher spanning Iran, Turkey, Poland, and the US.",
   },
   {
     role: "Front-End Engineer",
@@ -133,16 +134,16 @@ export const projects = [
 
 export const about = {
   intro:
-    "I started programming in 2019 and have spent the years since deep in frontend craft — building interfaces that feel intentional, animated, and production-ready.",
+    "I’m no longer just a developer. I’m a one-person army — someone who takes an idea and turns it into a fully digital, professional, coded, and automated business.",
   body: [
-    "I’m proficient in React and Angular, fluent across modern JavaScript ecosystems, and equally comfortable in Linux and DevOps environments. I love Apple as a product philosophy — and Linux as a daily engineering reality.",
-    "Beyond shipping products, I teach through writing and video: 140+ Persian articles, 14+ English pieces on Medium, plus content on YouTube and Aparat. Sharing knowledge is part of how I stay sharp.",
-    "Today I’m co-founder at Vitoria, collaborating with teams worldwide to turn ambitious product ideas into refined digital experiences.",
+    "I launch and build businesses for people: product, systems, design, automation, and the code that makes revenue possible. From first concept to a working digital company.",
+    "My stack centers on Python, Go, JavaScript, and TypeScript — plus the ecosystems around them. I work with AI daily, and I use design services to shape products that feel intentional, not improvised.",
+    "Today I’m co-founder at Vitoria, collaborating with founders and teams worldwide to turn ambitious ideas into businesses that run, sell, and scale.",
   ],
   stats: [
     { label: "Years building", value: "6+" },
     { label: "Public repos", value: "59+" },
-    { label: "Focus", value: "Frontend" },
+    { label: "Focus", value: "Businesses" },
     { label: "Based in", value: "Tehran" },
   ],
 } as const;

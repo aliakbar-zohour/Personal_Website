@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type CursorMode = "default" | "hover" | "view" | "drag";
+type CursorMode = "default" | "hover" | "view" | "drag" | "none";
 
 export function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -32,13 +32,11 @@ export function CustomCursor() {
     let ringY = mouseY;
     let raf = 0;
     let visible = false;
-    let mode: CursorMode = "default";
 
     const trails = trailRefs.current.filter(Boolean) as HTMLDivElement[];
     const trailPositions = trails.map(() => ({ x: mouseX, y: mouseY }));
 
     const setMode = (next: CursorMode, text = "") => {
-      mode = next;
       dot.dataset.mode = next;
       ring.dataset.mode = next;
       label.textContent = text;
@@ -98,6 +96,12 @@ export function CustomCursor() {
 
       const cursor = interactive.getAttribute("data-cursor") || "hover";
       const cursorLabel = interactive.getAttribute("data-cursor-label") || "";
+
+      // Dot only — no ring/label, so magnetic UI stays the focus
+      if (cursor === "none") {
+        setMode("none");
+        return;
+      }
 
       if (cursor === "view") setMode("view", cursorLabel || "View");
       else if (cursor === "drag") setMode("drag", cursorLabel || "Drag");

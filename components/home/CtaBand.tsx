@@ -14,7 +14,7 @@ export function CtaBand() {
             aria-hidden
           />
           <TextReveal
-            text="Open to collaborations, product builds, and international opportunities."
+            text="Bring me an idea. I'll turn it into a business that works."
             className="font-display relative z-10 max-w-3xl text-3xl font-bold tracking-tight md:text-5xl"
           />
           <FadeIn delay={0.15}>

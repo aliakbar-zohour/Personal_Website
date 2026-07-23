@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   creator: site.name,
   publisher: site.name,
   category: "technology",
-  classification: "Portfolio / Personal Website",
+  classification: "Digital Business Builder / Personal Website",
   referrer: "origin-when-cross-origin",
   formatDetection: {
     email: false,

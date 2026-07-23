@@ -71,10 +71,10 @@ export function Navigation() {
             <ThemeSwitcher />
             <MagneticButton
               href="/contact"
-              data-cursor-label="Talk"
+              data-cursor="none"
               className="nav-cta"
             >
-              Let&apos;s talk
+              Build with me
             </MagneticButton>
           </div>
 

@@ -8,15 +8,15 @@ export function Footer() {
         <div className="grid gap-12 md:grid-cols-[1.4fr_1fr]">
           <div>
             <p className="font-display text-[clamp(1.85rem,4vw,3rem)] font-bold tracking-tight leading-[1.1]">
-              Let&apos;s build something
-              <span className="font-serif italic text-[var(--accent)]"> unforgettable</span>.
+              Let&apos;s turn your idea into a
+              <span className="font-serif italic text-[var(--accent)]"> business</span>.
             </p>
             <Link
               href="/contact"
               data-cursor="hover"
               className="line-link mt-8 inline-flex text-sm tracking-[0.16em] uppercase text-[var(--fg-muted)]"
             >
-              Start a project →
+              Start building →
             </Link>
           </div>
 

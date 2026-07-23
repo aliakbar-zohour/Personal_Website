@@ -1,5 +1,6 @@
 /* TEAM */
 Creator: Aliakbar Zohour
+Role: Digital Business Builder
 Site: https://aliakbarzohour.com
 Contact: hello@aliakbarzohour.com
 Telegram: https://t.me/aliakbarzohour20
@@ -7,6 +8,6 @@ Location: Tehran, Iran
 
 /* SITE */
 Standards: HTML5, CSS3, Next.js
-Components: React, GSAP, Framer Motion
+Stack: Python, Go, TypeScript, AI, Design
 Last update: 2026
 Language: English

@@ -14,9 +14,9 @@ export const metadata: Metadata = createPageMetadata({
   path: "/work",
   keywords: [
     "Aliakbar Zohour projects",
-    "frontend case studies",
-    "React projects",
-    "creative coding portfolio",
+    "digital business builds",
+    "Python Go TypeScript projects",
+    "AI automation products",
   ],
 });
 

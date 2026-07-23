@@ -12,7 +12,7 @@ export function AboutPageClient() {
           About
         </p>
         <TextReveal
-          text="Frontend craft with product instinct."
+          text="From idea to income — digital businesses, built end to end."
           className="font-display max-w-3xl text-4xl font-bold tracking-tight md:text-6xl"
         />
 

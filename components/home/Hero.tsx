@@ -83,14 +83,14 @@ export function Hero() {
             <div className="hero-ctas">
               <MagneticButton
                 href="/work"
-                data-cursor-label="Work"
+                data-cursor="none"
                 className="hero-cta btn-accent inline-flex items-center px-6 py-3.5 text-xs font-semibold tracking-[0.16em] uppercase"
               >
                 View work
               </MagneticButton>
               <MagneticButton
                 href="/contact"
-                data-cursor-label="Talk"
+                data-cursor="none"
                 className="hero-cta hero-cta--ghost inline-flex items-center px-6 py-3.5 text-xs tracking-[0.16em] uppercase"
               >
                 Contact

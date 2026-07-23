@@ -17,7 +17,7 @@ export function SelectedWork() {
               Selected work
             </p>
             <TextReveal
-              text="Projects that shape how I build."
+              text="Ideas turned into working systems."
               className="font-display max-w-xl text-4xl font-bold tracking-tight md:text-5xl"
             />
           </div>

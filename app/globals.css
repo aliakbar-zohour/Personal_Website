@@ -901,7 +901,8 @@ img {
     opacity 0.25s ease;
 }
 
-.cursor-dot[data-mode="default"] {
+.cursor-dot[data-mode="default"],
+.cursor-dot[data-mode="none"] {
   mix-blend-mode: var(--cursor-blend);
 }
 
@@ -919,6 +920,15 @@ img {
     border-color 0.3s ease,
     background 0.35s ease,
     opacity 0.25s ease;
+}
+
+.cursor-ring[data-mode="none"] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  border-color: transparent;
+  background: transparent;
+  pointer-events: none;
 }
 
 .cursor-trail {
@@ -943,8 +953,8 @@ img {
   width: 64px;
   height: 64px;
   border-color: var(--accent);
-  background: color-mix(in srgb, var(--bg) 75%, transparent);
-  backdrop-filter: blur(4px);
+  background: color-mix(in srgb, var(--bg) 82%, transparent);
+  backdrop-filter: blur(6px);
 }
 
 .cursor-ring[data-mode="view"] {
@@ -958,13 +968,19 @@ img {
   font-size: 10px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  font-weight: 600;
-  color: var(--btn-on-accent);
+  font-weight: 700;
+  color: var(--accent);
   opacity: 0;
   transform: scale(0.8);
   transition:
     opacity 0.25s ease,
-    transform 0.35s var(--ease-out-expo);
+    transform 0.35s var(--ease-out-expo),
+    color 0.25s ease;
+}
+
+.cursor-ring[data-mode="view"] .cursor-label,
+.cursor-ring[data-mode="drag"] .cursor-label {
+  color: var(--btn-on-accent);
 }
 
 .cursor-label[data-visible="true"] {
@@ -1122,182 +1138,189 @@ button.btn-accent {
   mix-blend-mode: normal;
 }
 
-.back-to-top {
-  --btt-size: 4.25rem;
+.back-to-top-slot {
   position: fixed;
-  left: 1.25rem;
-  bottom: 1.25rem;
+  left: 1.35rem;
+  bottom: 1.35rem;
   z-index: 45;
-  width: var(--btt-size);
-  height: var(--btt-size);
+  width: 4.5rem;
+  height: 4.5rem;
   display: grid;
   place-items: center;
-  isolation: isolate;
-  color: var(--fg);
-  /* keep it off the content flow — viewport corner only */
-  margin: 0;
+  pointer-events: none;
 }
 
 @media (max-width: 640px) {
-  .back-to-top {
-    --btt-size: 3.75rem;
-    left: 0.85rem;
-    bottom: 0.85rem;
+  .back-to-top-slot {
+    left: 0.9rem;
+    bottom: 0.9rem;
+    width: 4rem;
+    height: 4rem;
   }
 }
 
 @media (min-width: 1600px) {
-  .back-to-top {
-    left: 1.75rem;
-    bottom: 1.75rem;
+  .back-to-top-slot {
+    left: 1.85rem;
+    bottom: 1.85rem;
   }
+}
+
+.back-to-top {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: var(--fg);
+  pointer-events: auto;
+  cursor: none;
+  isolation: isolate;
+}
+
+.back-to-top__glow {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--accent) 28%, transparent) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  filter: blur(10px);
+  transition: opacity 0.55s var(--ease-out-expo);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .back-to-top__ring {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-}
-
-.back-to-top__ring svg {
   width: 100%;
   height: 100%;
   transform: rotate(-90deg);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .back-to-top__track,
-.back-to-top__progress {
+.back-to-top__meter {
   fill: none;
-  stroke-width: 1;
+  stroke-width: 1.25;
 }
 
 .back-to-top__track {
-  stroke: var(--line);
+  stroke: color-mix(in srgb, var(--fg) 14%, transparent);
 }
 
-.back-to-top__progress {
+.back-to-top__meter {
   stroke: var(--accent);
   stroke-linecap: round;
-  transition: stroke-dashoffset 0.15s linear;
+  transition: stroke-dashoffset 0.14s linear;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent) 45%, transparent));
 }
 
 .back-to-top__core {
   position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: calc(var(--btt-size) - 0.85rem);
-  height: calc(var(--btt-size) - 0.85rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.15rem;
+  width: 72%;
+  height: 72%;
   border-radius: 50%;
   background:
     radial-gradient(
-      circle at 30% 25%,
-      color-mix(in srgb, var(--accent) 18%, transparent),
-      transparent 55%
+      circle at 32% 28%,
+      color-mix(in srgb, var(--accent) 16%, transparent),
+      transparent 52%
     ),
-    color-mix(in srgb, var(--bg) 72%, transparent);
+    color-mix(in srgb, var(--bg) 78%, transparent);
   border: 1px solid color-mix(in srgb, var(--fg) 12%, transparent);
-  backdrop-filter: blur(16px) saturate(1.2);
+  backdrop-filter: blur(18px) saturate(1.25);
   box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--accent) 8%, transparent),
-    0 18px 40px rgba(0, 0, 0, 0.28);
-  overflow: hidden;
+    inset 0 1px 0 color-mix(in srgb, var(--fg) 8%, transparent),
+    0 16px 36px rgba(0, 0, 0, 0.32);
   transition:
     border-color 0.45s var(--ease-out-expo),
-    transform 0.45s var(--ease-out-expo),
-    background 0.45s var(--ease-out-expo),
-    box-shadow 0.45s var(--ease-out-expo);
+    box-shadow 0.45s var(--ease-out-expo),
+    background 0.45s var(--ease-out-expo);
+  overflow: hidden;
 }
 
-.back-to-top__core::before {
+.back-to-top__core::after {
   content: "";
   position: absolute;
-  inset: auto -20% -35%;
-  height: 55%;
+  inset: auto -30% -40%;
+  height: 60%;
   background: linear-gradient(
     180deg,
     transparent,
-    color-mix(in srgb, var(--accent) 22%, transparent)
+    color-mix(in srgb, var(--accent) 18%, transparent)
   );
   opacity: 0;
-  transition: opacity 0.45s var(--ease-out-expo);
+  transition: opacity 0.5s var(--ease-out-expo);
+  pointer-events: none;
 }
 
-.back-to-top__arrow {
-  position: absolute;
-  top: 1rem;
+.back-to-top__icon-wrap {
   display: grid;
   place-items: center;
-  width: 0.7rem;
-  height: 0.9rem;
+  line-height: 0;
 }
 
-.back-to-top__arrow span {
-  position: relative;
-  display: block;
-  width: 1px;
-  height: 0.7rem;
-  background: var(--accent);
-  transform: translateY(2px);
-  transition: transform 0.45s var(--ease-out-expo);
-}
-
-.back-to-top__arrow span::before,
-.back-to-top__arrow span::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  width: 0.38rem;
-  height: 1px;
-  background: var(--accent);
-}
-
-.back-to-top__arrow span::before {
-  left: 0;
-  transform-origin: left center;
-  transform: rotate(-42deg);
-}
-
-.back-to-top__arrow span::after {
-  right: 0;
-  transform-origin: right center;
-  transform: rotate(42deg);
+.back-to-top__icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: var(--fg);
+  transition:
+    color 0.35s ease,
+    transform 0.55s var(--ease-out-expo);
 }
 
 .back-to-top__label {
-  position: absolute;
-  bottom: 0.85rem;
-  font-size: 0.58rem;
+  font-size: 0.52rem;
   font-weight: 600;
-  letter-spacing: 0.28em;
+  letter-spacing: 0.26em;
   text-transform: uppercase;
   color: var(--fg-muted);
   transition: color 0.35s ease;
 }
 
-.back-to-top:hover .back-to-top__core {
-  border-color: color-mix(in srgb, var(--accent) 55%, transparent);
-  box-shadow:
-    0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent),
-    0 22px 48px rgba(0, 0, 0, 0.35),
-    0 0 32px color-mix(in srgb, var(--accent) 12%, transparent);
-  transform: translateY(-2px);
-}
-
-.back-to-top:hover .back-to-top__core::before {
+.back-to-top:hover .back-to-top__glow {
   opacity: 1;
 }
 
-.back-to-top:hover .back-to-top__arrow span {
-  transform: translateY(-2px);
+.back-to-top:hover .back-to-top__core {
+  border-color: color-mix(in srgb, var(--accent) 50%, transparent);
+  box-shadow:
+    inset 0 1px 0 color-mix(in srgb, var(--fg) 10%, transparent),
+    0 18px 40px rgba(0, 0, 0, 0.38),
+    0 0 28px color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.back-to-top:hover .back-to-top__core::after {
+  opacity: 1;
+}
+
+.back-to-top:hover .back-to-top__icon {
+  color: var(--accent);
+  transform: translateY(-3px);
 }
 
 .back-to-top:hover .back-to-top__label {
   color: var(--accent);
 }
 
-.back-to-top:active .back-to-top__core {
-  transform: translateY(0) scale(0.96);
+.back-to-top:active .back-to-top__icon {
+  transform: translateY(-1px);
 }
 
 @media (prefers-reduced-motion: reduce) {

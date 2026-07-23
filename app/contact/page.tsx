@@ -16,7 +16,7 @@ export const metadata: Metadata = createPageMetadata({
     "contact Aliakbar Zohour",
     "hire Aliakbar Zohour",
     "Telegram aliakbarzohour20",
-    "frontend freelance",
+    "build digital business",
   ],
 });
 

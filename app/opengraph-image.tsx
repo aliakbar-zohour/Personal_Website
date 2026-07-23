@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 import { site } from "@/lib/data";
 
-export const alt = `${site.name} — Frontend Engineer & Co-Founder`;
+export const alt = `${site.name} — Digital Business Builder`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -41,7 +41,7 @@ export default function OpenGraphImage() {
               background: "#d6ff4b",
             }}
           />
-          <span style={{ display: "flex" }}>Portfolio · Available worldwide</span>
+          <span style={{ display: "flex" }}>One-Person Army · Available worldwide</span>
         </div>
 
         <div
@@ -69,12 +69,12 @@ export default function OpenGraphImage() {
               display: "flex",
               fontSize: 28,
               color: "#8b93a1",
-              maxWidth: 760,
+              maxWidth: 800,
               lineHeight: 1.35,
             }}
           >
-            Frontend Engineer & Co-Founder — cinematic digital experiences with
-            React, Next.js & motion.
+            Digital Business Builder — I turn ideas into fully digital, coded &amp;
+            automated businesses.
           </div>
         </div>
 
@@ -91,7 +91,7 @@ export default function OpenGraphImage() {
         >
           <span style={{ display: "flex" }}>aliakbarzohour.com</span>
           <span style={{ display: "flex", color: "#d6ff4b" }}>
-            Hire · Collaborate · Build
+            Idea · Build · Automate
           </span>
         </div>
       </div>

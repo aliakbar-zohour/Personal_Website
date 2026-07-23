@@ -47,6 +47,11 @@ export function IntroLoader() {
         text.textContent = greeting.text;
         lang.textContent = greeting.lang;
         applyScript(greeting.script);
+        // Clear leftover blur/transform from the previous exit tween
+        gsap.set([text, lang], {
+          clearProps: "filter,transform",
+          opacity: 0,
+        });
       });
       tl.fromTo(
         text,
@@ -62,19 +67,30 @@ export function IntroLoader() {
       );
       tl.fromTo(
         lang,
-        { opacity: 0, y: 8 },
-        { opacity: 1, y: 0, duration: 0.25 },
+        { opacity: 0, y: 8, filter: "blur(0px)" },
+        { opacity: 1, y: 0, filter: "blur(0px)", duration: 0.25 },
         "<",
       );
       tl.to({}, { duration: index === greetings.length - 1 ? 0.55 : 0.28 });
       if (index < greetings.length - 1) {
-        tl.to([text, lang], {
+        tl.to(text, {
           y: -40,
           opacity: 0,
           filter: "blur(6px)",
           duration: 0.28,
           ease: "power2.in",
         });
+        // Don't blur the lang label — tiny muted text becomes unreadable
+        tl.to(
+          lang,
+          {
+            y: -16,
+            opacity: 0,
+            duration: 0.22,
+            ease: "power2.in",
+          },
+          "<",
+        );
       }
     });
 

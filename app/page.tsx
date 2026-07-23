@@ -14,9 +14,9 @@ export const metadata: Metadata = createPageMetadata({
   absoluteTitle: true,
   keywords: [
     "Aliakbar Zohour portfolio",
-    "hire frontend developer",
-    "React portfolio",
-    "Next.js portfolio",
+    "digital business builder",
+    "build digital business",
+    "one-person army developer",
   ],
 });
 

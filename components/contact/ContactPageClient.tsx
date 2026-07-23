@@ -32,13 +32,13 @@ export function ContactPageClient() {
             Contact
           </p>
           <TextReveal
-            text="Tell me about your next idea."
+            text="Tell me about the business you want to build."
             className="font-display max-w-xl text-4xl font-bold tracking-tight md:text-6xl"
           />
           <FadeIn delay={0.1}>
             <p className="mt-6 max-w-md text-lg leading-relaxed text-[var(--fg-muted)]">
-              Available for freelance collaborations, product partnerships, and full-time
-              conversations with ambitious teams worldwide.
+              Available for founders and teams ready to turn an idea into a fully digital,
+              coded, and automated business — worldwide.
             </p>
           </FadeIn>
 

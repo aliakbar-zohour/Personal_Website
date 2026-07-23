@@ -15,7 +15,7 @@ export function AboutPreview() {
             About
           </p>
           <TextReveal
-            text="Engineer. Co-founder. Storyteller in code."
+            text="Builder. Operator. One-person army."
             className="font-display max-w-xl text-4xl font-bold tracking-tight md:text-5xl"
           />
           <FadeIn delay={0.1}>

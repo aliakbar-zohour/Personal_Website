@@ -16,6 +16,7 @@ export function MagneticButton({
   children,
   strength = 0.42,
   className = "",
+  "data-cursor": dataCursor = "hover",
   ...props
 }: MagneticButtonProps) {
   const ref = useRef<HTMLAnchorElement>(null);
@@ -46,7 +47,7 @@ export function MagneticButton({
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className={className}
-      data-cursor="hover"
+      data-cursor={dataCursor}
       {...props}
     >
       {children}

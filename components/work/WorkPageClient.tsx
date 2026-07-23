@@ -12,13 +12,13 @@ export function WorkPageClient() {
           Portfolio
         </p>
         <TextReveal
-          text="A selection of builds, experiments, and product craft."
+          text="Products, systems, and businesses I’ve built."
           className="font-display max-w-3xl text-4xl font-bold tracking-tight md:text-6xl"
         />
         <FadeIn delay={0.1}>
           <p className="mt-6 max-w-xl text-lg text-[var(--fg-muted)]">
-            From realtime interfaces to creative tools — each project is a study in clarity,
-            motion, and engineering taste.
+            From APIs and AI tools to full product surfaces — each build is a step toward
+            digital businesses that run on code and automation.
           </p>
         </FadeIn>
 
