@@ -67,6 +67,12 @@ export function Hero() {
   return (
     <section ref={rootRef} className="hero">
       <div className="container hero-grid">
+        <div className="hero-visual-wrap" dir="ltr" aria-hidden={false}>
+          <div className="hero-visual">
+            <IranMap />
+          </div>
+        </div>
+
         <div className="hero-copy">
           <p className="hero-meta">
             {dict.site.role} · {dict.site.location}
@@ -104,12 +110,6 @@ export function Hero() {
               <span />
             </span>
             {dict.hero.scroll}
-          </div>
-        </div>
-
-        <div className="hero-visual-wrap" dir="ltr">
-          <div className="hero-visual">
-            <IranMap />
           </div>
         </div>
       </div>

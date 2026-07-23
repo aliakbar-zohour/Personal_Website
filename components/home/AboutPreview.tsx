@@ -19,7 +19,7 @@ export function AboutPreview() {
 
   return (
     <section className="section-pad border-t border-[var(--line)]">
-      <div className="container grid gap-14 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
+      <div className="container grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
         <div>
           <p className="mb-3 text-xs tracking-[0.22em] uppercase text-[var(--accent)]">
             {dict.aboutPreview.eyebrow}
@@ -57,11 +57,11 @@ export function AboutPreview() {
         <div className="grid grid-cols-2 gap-px bg-[var(--line)]">
           {stats.map((stat, index) => (
             <FadeIn key={stat.label} delay={0.08 * index}>
-              <div className="flex min-h-[140px] flex-col justify-between bg-[var(--bg)] p-6 md:min-h-[180px] md:p-8">
-                <p className="text-xs tracking-[0.16em] uppercase text-[var(--fg-muted)]">
+              <div className="flex min-h-[132px] flex-col justify-between bg-[var(--bg)] p-5 md:min-h-[180px] md:p-8">
+                <p className="text-[11px] tracking-[0.14em] uppercase text-[var(--fg-muted)] md:text-xs md:tracking-[0.16em]">
                   {stat.label}
                 </p>
-                <p className="font-display text-3xl font-bold tracking-tight md:text-4xl">
+                <p className="font-display text-[1.85rem] font-bold tracking-tight md:text-4xl">
                   {stat.value}
                 </p>
               </div>

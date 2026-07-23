@@ -46,16 +46,19 @@ export function SelectedWork() {
                     rel="noopener noreferrer"
                     data-cursor="view"
                     data-cursor-label={dict.selectedWork.view}
-                    className="grid grid-cols-1 items-center gap-4 py-8 transition-transform duration-500 md:grid-cols-[80px_1.4fr_1fr_100px] md:gap-8 md:py-10 group-hover:md:translate-x-2"
+                    className="project-row-link grid grid-cols-[auto_1fr] items-start gap-x-4 gap-y-2 py-7 transition-transform duration-500 md:grid-cols-[80px_1.4fr_1fr_100px] md:items-center md:gap-8 md:py-10 group-hover:md:translate-x-2"
                   >
-                    <span className="text-xs tracking-[0.16em] text-[var(--fg-muted)]">
+                    <span className="project-row-index font-display text-xl font-bold text-[var(--accent)] md:text-xs md:font-normal md:tracking-[0.16em] md:text-[var(--fg-muted)]">
                       0{index + 1}
                     </span>
                     <div>
-                      <h3 className="font-display text-2xl font-bold tracking-tight transition-colors group-hover:text-[var(--accent)] md:text-3xl">
+                      <h3 className="font-display text-[1.55rem] font-bold tracking-tight transition-colors group-hover:text-[var(--accent)] md:text-3xl">
                         {copy?.title ?? project.title}
                       </h3>
-                      <p className="mt-2 text-sm text-[var(--fg-muted)] md:hidden">
+                      <p className="mt-2 text-sm leading-relaxed text-[var(--fg-muted)] md:hidden">
+                        {copy?.summary ?? project.summary}
+                      </p>
+                      <p className="mt-2 text-[11px] tracking-[0.14em] uppercase text-[var(--fg-muted)] md:hidden">
                         {copy?.category ?? project.category} · {project.year}
                       </p>
                     </div>
